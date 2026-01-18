@@ -1,0 +1,7 @@
+import pandas as pd, os
+df = pd.read_csv("final_monthly_df_shifted.csv")  # or final_training_engineered_shift.csv
+hist = df[["state","year","month","dengue_cases"]].copy()
+hist.columns = ["state","year","month","dengue_cases"]
+os.makedirs("models", exist_ok=True)
+hist.to_csv("models/historical_cases.csv", index=False)
+print("written models/historical_cases.csv ->", len(hist), "rows")
